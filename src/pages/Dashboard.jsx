@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import RepoCard from '../components/RepoCard';
 import { useAuth } from '../hooks/useAuth';
-import { getRepos } from '../services/api';
+import { getRepos, connectRepo } from '../services/api';
+
 
 export default function Dashboard() {
   const { username, loading } = useAuth();
@@ -26,16 +27,18 @@ export default function Dashboard() {
       .finally(() => setReposLoading(false));
   }, [username]);
 
-  const handleConnect = (repo) => {
-    setConnected((prev) => {
-      const next = new Set(prev);
-      if (next.has(repo.name)) {
-        next.delete(repo.name);
-      } else {
+
+  const handleConnect = async (repo) => {
+    try {
+      await connectRepo(repo.owner.login, repo.name);
+      setConnected((prev) => {
+        const next = new Set(prev);
         next.add(repo.name);
-      }
-      return next;
-    });
+        return next;
+      });
+    } catch (err) {
+      console.error('Failed to connect repo', err);
+    }
   };
 
   if (loading) {
