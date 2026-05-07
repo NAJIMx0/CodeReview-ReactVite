@@ -40,8 +40,10 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center text-green-600 text-sm">
-        Loading...<span className="cursor-blink ml-1">_</span>
+      <div className="min-h-screen bg-black flex items-center justify-center text-green-400 text-lg">
+        <span className="text-green-500">~/codereview $</span>
+        <span className="ml-3">initializing</span>
+        <span className="cursor-blink ml-1 text-green-400">█</span>
       </div>
     );
   }
@@ -49,23 +51,47 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-black">
       <Navbar username={username} />
-      <main className="max-w-4xl mx-auto px-4 py-6">
-        <div className="space-y-1 mb-6">
-          <div>
-            <span className="text-green-600">C:\&gt; </span>
-            <span className="text-white">list repos</span>
+      <main className="max-w-5xl mx-auto px-6 py-8">
+        <div className="space-y-4 mb-10">
+          <div className="flex items-start gap-2">
+            <span className="text-green-500 text-base font-semibold shrink-0 mt-0.5">~/codereview $</span>
+            <span className="text-white text-base font-semibold">list --repos</span>
           </div>
-          <div className="h-px bg-green-800 w-full" />
-          <div className="text-xs text-green-700">
-            Found {repos.length} repository{repos.length !== 1 ? 's' : ''}...
+
+          <div className="h-px bg-gradient-to-r from-green-500/40 via-green-400/40 to-transparent" />
+
+          <div className="flex items-center gap-3">
+            <span className="text-green-400 text-xl font-semibold">
+              {repos.length}
+            </span>
+            <span className="text-green-300 text-xl font-semibold">
+              {repos.length === 1 ? 'repository' : 'repositories'}
+            </span>
+            <span className="text-green-600 text-xl font-semibold">found</span>
+            <span className="ml-2 text-green-500 text-xl">●</span>
+          </div>
+
+          <div className="flex items-center gap-4 text-xs text-green-700">
+            <span className="flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-green-400 inline-block" />
+              {connected.size} connected
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-green-800 inline-block" />
+              {repos.length - connected.size} available
+            </span>
           </div>
         </div>
+
         {reposLoading ? (
-          <div className="text-green-600 text-sm">
-            Fetching repos...<span className="cursor-blink">_</span>
+          <div className="text-green-400 text-lg flex items-center gap-3">
+            <span className="text-green-500">Fetching repos...</span>
+            <span className="cursor-blink">█</span>
           </div>
         ) : repos.length === 0 ? (
-          <div className="text-green-600 text-sm">No repositories found.</div>
+          <div className="text-green-400 text-lg border border-green-800 bg-green-950/20 p-6 rounded-lg">
+            No repositories found. Connect a GitHub account to continue.
+          </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {repos.map((repo) => (
@@ -78,8 +104,11 @@ export default function Dashboard() {
             ))}
           </div>
         )}
-        <div className="mt-8 text-xs text-green-700">
-          Type 'connect &lt;repo&gt;' to enable code review<span className="cursor-blink text-green-400">_</span>
+
+        <div className="mt-12 pt-6 border-t border-green-900 flex items-center gap-2 text-sm text-green-700">
+          <span className="text-green-500">$</span>
+          <span>Select a repository to enable AI-powered code review</span>
+          <span className="cursor-blink text-green-400 ml-1">█</span>
         </div>
       </main>
     </div>
