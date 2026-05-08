@@ -6,5 +6,14 @@ const api = axios.create({
 
 export const getMe = () => api.get('/auth/me').then((res) => res.data);
 export const getRepos = () => api.get('/auth/repo').then((res) => res.data);
+
 export const connectRepo = (owner, repoName) =>
-    api.post(`/auth/connect/${owner}/${repoName}`).then(res => res.data);
+    fetch(`/api/auth/connect/${owner}/${repoName}`, {
+      method: 'POST',
+      credentials: 'include',
+    }).then((r) => r.json());
+
+export const getConnectedRepos = () =>
+    fetch('/api/auth/connected-repos', {
+      credentials: 'include',
+    }).then((r) => r.json());

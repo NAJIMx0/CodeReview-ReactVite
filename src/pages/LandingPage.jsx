@@ -2,16 +2,16 @@ import { loginWithGitHub } from '../services/auth';
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-black text-green-400 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-black text-gray-300 flex items-center justify-center p-6">
       <div className="max-w-2xl w-full">
-        <div className="border border-green-800 rounded-lg overflow-hidden shadow-2xl shadow-green-500/10">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-green-800 bg-[#0a0a0a]">
+        <div className="border border-gray-700 rounded-lg overflow-hidden shadow-2xl shadow-black/30">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-gray-700 bg-[#0a0a0a]">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-green-900" />
-              <div className="w-3 h-3 rounded-full bg-green-700" />
-              <div className="w-3 h-3 rounded-full bg-green-500" />
+              <div className="w-3 h-3 rounded-full bg-gray-700" />
+              <div className="w-3 h-3 rounded-full bg-gray-600" />
+              <div className="w-3 h-3 rounded-full bg-gray-500" />
             </div>
-            <span className="text-xs text-green-700">codereview@local ~ /auth</span>
+            <span className="text-xs text-gray-500">codereview@local ~ /auth</span>
           </div>
           <div className="p-8 md:p-12 space-y-6 bg-black">
             <pre className="text-green-400 text-sm leading-tight hidden md:block">
@@ -23,14 +23,14 @@ export default function LandingPage() {
               CODE REVIEW
             </h1>
 
-            <div className="h-px bg-gradient-to-r from-green-500/50 via-green-400/50 to-transparent" />
+            <div className="h-px bg-gradient-to-r from-gray-600 via-gray-500 to-transparent" />
 
             <div className="space-y-3">
               <div className="flex items-start gap-2">
-                <span className="text-green-500 text-sm shrink-0">~/codereview $</span>
+                <span className="text-green-400 text-sm shrink-0">~/codereview $</span>
                 <span className="text-white text-sm">echo $DESCRIPTION</span>
               </div>
-              <p className="text-lg text-green-300 leading-relaxed pl-20 md:pl-24">
+              <p className="text-lg text-gray-300 leading-relaxed pl-20 md:pl-24">
                 AI-Powered Code Review — connect your GitHub repositories and get instant intelligent feedback on every push.
               </p>
             </div>
@@ -38,22 +38,22 @@ export default function LandingPage() {
             <div className="space-y-2 pl-4">
               <div className="flex items-center gap-3 text-sm">
                 <span className="text-green-400">[✓]</span>
-                <span className="text-green-300">Automated PR reviews</span>
+                <span className="text-gray-300">Automated PR reviews</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <span className="text-green-400">[✓]</span>
-                <span className="text-green-300">Security vulnerability detection</span>
+                <span className="text-gray-300">Security vulnerability detection</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <span className="text-green-400">[✓]</span>
-                <span className="text-green-300">Code quality scoring</span>
+                <span className="text-gray-300">Code quality scoring</span>
               </div>
             </div>
 
-            <div className="h-px bg-green-900" />
+            <div className="h-px bg-gray-800" />
 
             <div className="flex items-center gap-3 text-sm">
-              <span className="text-green-700">STATUS:</span>
+              <span className="text-gray-500">STATUS:</span>
               <span className="text-green-400 font-bold">AWAITING AUTHENTICATION</span>
             </div>
 
@@ -64,11 +64,11 @@ export default function LandingPage() {
               &gt; AUTHENTICATE WITH GITHUB
             </button>
 
-            <div className="flex items-center gap-2 text-sm text-green-800 pt-1">
-              <span className="text-green-500">$</span>
-              <span>Press the button above or type</span>
-              <code className="px-2 py-0.5 bg-green-950 text-green-400 border border-green-800 text-xs">auth github</code>
-              <span>to continue</span>
+            <div className="flex items-center gap-2 text-sm text-gray-600 pt-1">
+              <span className="text-green-400">$</span>
+              <span className="text-gray-400">Press the button above or type</span>
+              <code className="px-2 py-0.5 bg-gray-900 text-gray-300 border border-gray-700 text-xs">auth github</code>
+              <span className="text-gray-400">to continue</span>
               <span className="cursor-blink text-green-400 ml-1">█</span>
             </div>
           </div>
