@@ -21,7 +21,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!loading && !username) {
-      navigate('/', { replace: true }); // replace so back button doesn't loop
+      navigate('/', { replace: true });
     }
   }, [username, loading, navigate]);
 

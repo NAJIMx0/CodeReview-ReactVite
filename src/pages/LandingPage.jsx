@@ -11,7 +11,9 @@ export default function LandingPage() {
     if (!loading && username) {
       navigate('/dashboard', { replace: true });
     }
-  }, [username, loading]);
+  }, [username, loading, navigate]);
+
+  if (loading) return null; // don't flash landing page if already logged in
 
   return (
     <div className="min-h-screen bg-black text-gray-300 flex items-center justify-center p-6">

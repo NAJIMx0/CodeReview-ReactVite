@@ -4,10 +4,10 @@ import { logout } from '../services/auth';
 export default function Navbar({ username }) {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
+    // no navigate() needed — logout() does window.location.replace
   };
-
   return (
     <nav className="flex items-center justify-between px-6 py-3 border-b border-gray-800 bg-black">
       <Link to="/dashboard" className="flex items-center gap-2">

@@ -5,19 +5,27 @@ export const loginWithGitHub = () => {
 };
 
 export const logout = async () => {
+  // Clear local state first
   localStorage.removeItem('username');
 
   try {
-    await fetch('http://localhost:8080/api/auth/logout', {
+    await fetch(`${AUTH_BASE}/api/auth/revoke`, {
       method: 'POST',
-      credentials: 'include', // ← this sends the cookie TO the backend which then kills it
+      credentials: 'include',
     });
   } catch (e) {
-    console.error('Logout error', e);
+    console.log('revoke failed, continuing');
   }
 
-  // Remove this line — cookie deletion must happen server-side
-  // document.cookie = 'JSESSIONID=...'  ← DELETE THIS
+  try {
+    await fetch(`${AUTH_BASE}/api/auth/logout`, {
+      method: 'POST',
+      credentials: 'include',
+    });
+  } catch (e) {
+    console.log('logout failed, continuing');
+  }
 
-  window.location.href = 'http://localhost:5173';
+  // Force full page reload to wipe all React state
+  window.location.replace('http://localhost:5173');
 };
