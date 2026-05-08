@@ -5,9 +5,7 @@ export const loginWithGitHub = () => {
 };
 
 export const logout = async () => {
-  // Clear local state first
-  localStorage.removeItem('username');
-
+  // 1. Revoke first while session is still alive
   try {
     await fetch(`${AUTH_BASE}/api/auth/revoke`, {
       method: 'POST',
@@ -17,15 +15,20 @@ export const logout = async () => {
     console.log('revoke failed, continuing');
   }
 
+  // 2. Kill the Spring session
   try {
     await fetch(`${AUTH_BASE}/api/auth/logout`, {
       method: 'POST',
       credentials: 'include',
+      redirect: 'manual',
     });
   } catch (e) {
     console.log('logout failed, continuing');
   }
 
-  // Force full page reload to wipe all React state
-  window.location.replace('http://localhost:5173');
+  // 3. Clear localStorage AFTER server calls complete
+  localStorage.clear(); // ✅ clear everything, not just username
+
+  // 4. Navigate — use href not replace so page fully reloads
+  window.location.href = 'http://localhost:5173';
 };
