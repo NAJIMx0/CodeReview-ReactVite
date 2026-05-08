@@ -10,11 +10,14 @@ export const logout = async () => {
   try {
     await fetch('http://localhost:8080/api/auth/logout', {
       method: 'POST',
-      credentials: 'include',
+      credentials: 'include', // ← this sends the cookie TO the backend which then kills it
     });
   } catch (e) {
     console.error('Logout error', e);
   }
-  document.cookie = 'JSESSIONID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=localhost';
+
+  // Remove this line — cookie deletion must happen server-side
+  // document.cookie = 'JSESSIONID=...'  ← DELETE THIS
+
   window.location.href = 'http://localhost:5173';
 };

@@ -1,6 +1,18 @@
 import { loginWithGitHub } from '../services/auth';
+import { useAuth } from '../hooks/useAuth';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+  const { username, loading } = useAuth();
+
+  useEffect(() => {
+    if (!loading && username) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [username, loading]);
+
   return (
     <div className="min-h-screen bg-black text-gray-300 flex items-center justify-center p-6">
       <div className="max-w-2xl w-full">
