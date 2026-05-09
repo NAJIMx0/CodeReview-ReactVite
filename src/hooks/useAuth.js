@@ -6,7 +6,7 @@ export function useAuth() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [succesgs, setSuccessg] = useState(null);
-
+///// test the generate v1 day2
     useEffect(() => {
         // ✅ No localStorage, no hasFetched — always ask the server
         getMe()
