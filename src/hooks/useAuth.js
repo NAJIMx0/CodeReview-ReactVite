@@ -19,3 +19,7 @@ export function useAuth() {
 
     return { username, loading };
 }
+
+
+
+// test the generate-service get code
