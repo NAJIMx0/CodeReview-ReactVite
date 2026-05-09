@@ -3,7 +3,7 @@ import { logout } from '../services/auth';
 
 export default function Navbar({ username }) {
   const navigate = useNavigate();
-
+// tomorrow need to remember this logout
   const handleLogout = async () => {
     await logout();
     // no navigate() needed — logout() does window.location.replace
