@@ -4,6 +4,7 @@ import { getMe } from '../services/api';
 export function useAuth() {
     const [username, setUsername] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         // ✅ No localStorage, no hasFetched — always ask the server
@@ -22,4 +23,4 @@ export function useAuth() {
 
 
 
-// test the generate-service get code v2
+// test the generate-service get code v3
