@@ -5,6 +5,7 @@ export function useAuth() {
     const [username, setUsername] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
 
     useEffect(() => {
         // ✅ No localStorage, no hasFetched — always ask the server
@@ -23,4 +24,4 @@ export function useAuth() {
 
 
 
-// test the generate-service get code v3
+// test the generate-service get code v4
