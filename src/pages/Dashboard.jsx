@@ -28,10 +28,10 @@ export default function Dashboard() {
     }
   }, [username, loading, navigate]);
 
-  useEffect(() => {
-    const audio = new Audio(sound);
-    audio.play().catch(() => {});
-  }, []);
+  // useEffect(() => {
+  //   const audio = new Audio(sound);
+  //   audio.play().catch(() => {});
+  // }, []);
 
   useEffect(() => {
     if (!username) return;
