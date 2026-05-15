@@ -5,7 +5,9 @@ export default function Review() {
     const [connected, setConnected] = useState(false);
 
     useEffect(() => {
-        const eventSource = new EventSource('http://localhost:8998/api/generate/stream');
+        const eventSource = new EventSource('/api/generate/stream', {
+            withCredentials: true
+        });
 
         eventSource.onopen = () => {
             setConnected(true);
