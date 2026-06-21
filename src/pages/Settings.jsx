@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import SnakeBackground from '../components/SnakeBackground';
 import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
 import { getConnectedRepos } from '../services/api';
 import { logout } from '../services/auth';
 
 export default function Settings() {
     const { username } = useAuth();
+    const { theme, setTheme } = useTheme();
     const [connectedRepos, setConnectedRepos] = useState([]);
-    const [theme, setTheme] = useState('dark');
 
     useEffect(() => {
         getConnectedRepos().then(setConnectedRepos).catch(() => {});

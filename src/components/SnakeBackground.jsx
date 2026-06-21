@@ -1,10 +1,27 @@
+import { useState, useEffect } from 'react';
 import snake1 from '../assets/snake1.jfif';
 import snake2 from '../assets/snake2.jfif';
 
 export default function SnakeBackground() {
+    const [isLight, setIsLight] = useState(
+        () => document.documentElement.classList.contains('light')
+    );
+
+    useEffect(() => {
+        const observer = new MutationObserver(() => {
+            setIsLight(document.documentElement.classList.contains('light'));
+        });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        return () => observer.disconnect();
+    }, []);
+
+    // The grayscale-and-darkened snake images were designed for a black
+    // background — on light mode they just look like muddy gray noise.
+    // Easiest correct fix: don't render them at all in light mode.
+    if (isLight) return null;
+
     return (
         <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-            {/* lighter overlay */}
             <div className="absolute inset-0 bg-black/60 z-10" />
 
             <img

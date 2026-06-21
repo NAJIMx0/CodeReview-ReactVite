@@ -47,3 +47,12 @@ export const getReviewHistory = (repoName) =>
             if (!r.ok) throw new Error('Failed to fetch review history');
             return r.json();
         });
+
+export const disconnectRepo = (repoName) =>
+    fetch(`${BASE}/connected-repos/${encodeURIComponent(repoName)}`, {
+        method: 'DELETE',
+        credentials: 'include',
+    }).then(r => {
+        if (!r.ok) throw new Error('Failed to disconnect repo');
+        return r.json();
+    });
