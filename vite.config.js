@@ -7,7 +7,15 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
+      '/api/auth': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
       '/api/generate': {
+        target: 'http://localhost:8998',
+        changeOrigin: true,
+      },
+      '/api/reviews': {
         target: 'http://localhost:8998',
         changeOrigin: true,
       },

@@ -1,4 +1,4 @@
-export const AUTH_BASE = 'http://localhost:8080';
+export const AUTH_BASE = '';
 
 export const loginWithGitHub = () => {
   window.location.href = `${AUTH_BASE}/oauth2/authorization/github`;
